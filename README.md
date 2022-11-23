@@ -41,7 +41,7 @@ systemd       1                 root  mem       REG              253,0    157440
 
 <pre>echo -e "COMMAND\tPID\tUSER\tSIZE/OFF\tNODE\tNAME"</pre>
 
-<p>Отбираем в каталоге /proc все директории с числовым именем <pid>, что являются id процессора:</p>
+<p>Отбираем в каталоге /proc все директории с числовым именем &lt;pid&gt;, что являются id процессора:</p>
 
 <pre>find /proc -maxdepth 1 -type d | cut -f3 -d '/' | grep -E [0-9]+ | sort -n | grep -v $$</pre>
 
