@@ -89,7 +89,7 @@ node=$(stat $file 2> /dev/null | grep 'Inode:' | awk '{print $4}') # NODE</pre>
 
 <pre>echo -e "$command\t$pid\t$user\t$size\t$node\t$file"</pre>
 
-<p>Для того чтобы скрипт запускался только от имени root, в начале добавим следующий блок:</p>
+<p>Для того чтобы скрипт запускался только от имени root, в начале скрипта добавим следующий блок:</p>
 
 <pre># Run as root?
 if [[ $EUID -ne 0 ]]; then
@@ -193,7 +193,7 @@ systemd	1	root			/proc/1/fd/socket:[53568]
 
 <pre>$ git clone https://github.com/SergSha/process_control.git && cd ./process_control</pre>
 
-<p>Для запуска скрипта запустите (с правами root) следующую команду:</p>
+<p>Для запуска скрипта выполните (с правами root) следующую команду:</p>
 
 <pre>$ sudo bash ./lsof.sh</pre>
 
