@@ -193,7 +193,7 @@ systemd	1	root			/proc/1/fd/socket:[53568]
 
 <pre>$ git clone https://github.com/SergSha/process_control.git && cd ./process_control</pre>
 
-<p>Для запуска скрипта выполните (с правами root) следующую команду:</p>
+<p>Для запуска скрипта выполнить (с правами root) следующую команду:</p>
 
 <pre>$ sudo bash ./lsof.sh</pre>
 
