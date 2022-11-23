@@ -63,7 +63,7 @@ fi</pre>
 
 <p>Теперь находим значения для колонок SIZE/OFF, NODE и NAME:</p>
 
-<p>Находим рабочий каталог по символической ссылке /proc/$pid/cwd и присвоим переменной <i>file</i> для колонки NAME:</p>
+<p>Находим рабочий каталог по символической ссылке /proc/&lt;pid&gt;/cwd и присвоим переменной <i>file</i> для колонки NAME:</p>
 
 <pre>file=$(readlink -f /proc/$pid/cwd)        # NAME</pre>
 
@@ -72,13 +72,13 @@ fi</pre>
 <pre>size=$(stat $file 2> /dev/null | grep 'Size:' | awk '{print $2}')  # SIZE/OFF
 node=$(stat $file 2> /dev/null | grep 'Inode:' | awk '{print $4}') # NODE</pre>
 
-<p>Находим значения <i>file</i>, <i>size</i>, <i>node</i> в списке файлов /proc/$pid/maps:</p>
+<p>Находим значения <i>file</i>, <i>size</i>, <i>node</i> в списке файлов /proc/&lt;pid&gt;/maps:</p>
 
 <pre>awk '$NF ~ "^/" {print $NF}' /proc/$pid/maps | sort -r | uniq | while read file; do # NAME
   size=$(stat $file 2> /dev/null | grep 'Size:' | awk '{print $2}')                 # SIZE/OFF
   node=$(stat $file 2> /dev/null | grep 'Inode:' | awk '{print $4}')                # NODE</pre>
 
-<p>Аналогичным образом находим значения <i>file</i>, <i>size</i>, <i>node</i> по символическим ссылкам в директории /proc/$pid/fd:</p>
+<p>Аналогичным образом находим значения <i>file</i>, <i>size</i>, <i>node</i> по символическим ссылкам в директории /proc/&lt;pid&gt;/fd:</p>
 
 <pre>ls /proc/$pid/fd/ | while read fd; do
   file=$(readlink -f /proc/$pid/fd/$fd)                              # NAME
